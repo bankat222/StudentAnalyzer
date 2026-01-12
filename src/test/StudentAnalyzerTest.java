@@ -29,4 +29,29 @@ public class StudentAnalyzerTest {
         StudentAnalyzer analyzer = new StudentAnalyzer();
         assertEquals(0, analyzer.countExcellentStudents(Collections.emptyList()));
     }
+
+    @Test
+    public void testCalculateValidAverage_NormalCase() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+        double avg = analyzer.calculateValidAverage(
+                Arrays.asList(9.0, 8.5, 7.0, 11.0, -1.0)
+        );
+        assertEquals(8.17, avg, 0.01);
+    }
+
+    @Test
+    public void testCalculateValidAverage_BoundaryValues() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+        double avg = analyzer.calculateValidAverage(
+                Arrays.asList(0.0, 10.0)
+        );
+        assertEquals(5.0, avg, 0.01);
+    }
+
+    @Test
+    public void testCalculateValidAverage_EmptyList() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+        assertEquals(0, analyzer.calculateValidAverage(Collections.emptyList()));
+    }
 }
+
