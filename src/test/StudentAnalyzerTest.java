@@ -86,4 +86,49 @@ public class StudentAnalyzerTest {
         assertEquals(9.0, avg, 0.01);
     }
 
+    @Test
+    public void testCountExcellentStudents_Boundary_JustBelowExcellent() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+        int result = analyzer.countExcellentStudents(
+                Arrays.asList(7.99)
+        );
+        assertEquals(0, result);
+    }
+
+    @Test
+    public void testCountExcellentStudents_Boundary_ExactlyEight() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+        int result = analyzer.countExcellentStudents(
+                Arrays.asList(8.0)
+        );
+        assertEquals(1, result);
+    }
+
+    @Test
+    public void testCountExcellentStudents_Boundary_MaxScore() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+        int result = analyzer.countExcellentStudents(
+                Arrays.asList(10.0)
+        );
+        assertEquals(1, result);
+    }
+
+    @Test
+    public void testCountExcellentStudents_AboveMaxBoundary() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+        int result = analyzer.countExcellentStudents(
+                Arrays.asList(10.01)
+        );
+        assertEquals(0, result);
+    }
+
+    @Test
+    public void testCalculateValidAverage_JustOutsideBoundary() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+        double avg = analyzer.calculateValidAverage(
+                Arrays.asList(-0.01, 10.01)
+        );
+        assertEquals(0, avg, 0.01);
+    }
+
 }
