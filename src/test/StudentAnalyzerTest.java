@@ -131,4 +131,49 @@ public class StudentAnalyzerTest {
         assertEquals(0, avg, 0.01);
     }
 
+    @Test
+    public void blackbox_CountExcellent_EquivalencePartition() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+        int result = analyzer.countExcellentStudents(
+                Arrays.asList(-1.0, 7.5, 8.0, 9.0, 11.0)
+        );
+        assertEquals(2, result);
+    }
+
+    @Test
+    public void blackbox_CountExcellent_EquivalencePartition() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+        int result = analyzer.countExcellentStudents(
+                Arrays.asList(-1.0, 7.5, 8.0, 9.0, 11.0)
+        );
+        assertEquals(2, result);
+    }
+
+    @Test
+    public void blackbox_CalculateAverage_EquivalencePartition() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+        double avg = analyzer.calculateValidAverage(
+                Arrays.asList(-2.0, 5.0, 9.0, 12.0)
+        );
+        assertEquals(7.0, avg, 0.01);
+    }
+
+    @Test
+    public void whitebox_CountExcellent_AllConditions() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+        int result = analyzer.countExcellentStudents(
+                Arrays.asList(8.0, -1.0, 11.0, 7.0)
+        );
+        assertEquals(1, result);
+    }
+
+    @Test
+    public void whitebox_CalculateAverage_MixedValues() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+        double avg = analyzer.calculateValidAverage(
+                Arrays.asList(0.0, 5.0, 10.0, -1.0)
+        );
+        assertEquals(5.0, avg, 0.01);
+    }
+
 }
